@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audio Player</title>
-  <link rel="stylesheet" href="./css/style.css">
-  <script defer src="./js/index.js"></script>
-</head>
-<body>
-  <img class="background" src="./assets/img/lemonade.png" alt="Background Image">
-  <audio class="music" src="./assets/audio/beyonce.mp3"></audio>
-  <main class="content">
-    <div class="image"></div>
-    <div class="controls"></div>
-  </main>
-  <footer>
-    <p>2023</p>
-    <p><a target="_blank" href="https://github.com/downlouder">downlouder</a></p>
-    <p>
-      <a target="_blank" href="https://rs.school/js-stage0/">
-        <img src="./assets/svg/rs_school_js.svg" alt="Logo">
-      </a>
-    </p>
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="./js/index.js"></script>
+  </head>
+  <body>
+    <img
+      class="background"
+      src="./assets/img/lemonade.png"
+      alt="Background Image"
+    />
+    <audio class="music" src="./assets/audio/beyonce.mp3"></audio>
+    <main class="content">
+      <img class="image" src="./assets/img/lemonade.png" alt="Music Art" />
+      <div class="controls">
+        <img
+          class="play-pause play-btn"
+          src="./assets/svg/play.png"
+          alt="Play Pause Button"
+        />
+        <div class="text-content">
+          <p class="song-artist">Beyonce</p>
+          <p class="song-label">Don't Hurt Yourself</p>
+        </div>
+        <div class="switch-buttons">
+          <img class="next" src="./assets/svg/forward.png" alt="Next" />
+          <img
+            class="previous"
+            src="./assets/svg/backward.png"
+            alt="Previous"
+          />
+        </div>
+        <input class="progress-bar" min="0" value="0" type="range" />
+        <p class="current-time">0:00</p>
+        <p class="duration">3:53</p>
+      </div>
+    </main>
+    <footer>
+      <p>2023</p>
+      <p>
+        <a target="_blank" href="https://github.com/downlouder">downlouder</a>
+      </p>
+      <p>
+        <a target="_blank" href="https://rs.school/js-stage0/">
+          <img src="./assets/svg/rs_school_js.svg" alt="Logo" />
+        </a>
+      </p>
+    </footer>
+  </body>
 </html>
