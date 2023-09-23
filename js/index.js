@@ -7,6 +7,8 @@ const backgroundImg = document.querySelector(".background");
 const songArtist = document.querySelector(".song-artist");
 const songLabel = document.querySelector(".song-label");
 const musicDuration = document.querySelector(".duration");
+const musicCurrentTime = document.querySelector(".current-time");
+const progressBar = document.querySelector(".progress-bar");
 const listOfMusic = [
   {
     link: "./assets/audio/beyonce.mp3",
@@ -24,13 +26,14 @@ const listOfMusic = [
   },
 ];
 let count = 0;
+progressBar.max = audio.duration;
 
 function startAudio(bool) {
+  progressBar.max = audio.duration;
   if (bool) {
     playPauseBtn.dataset.play = true;
     playPauseBtn.src = "./assets/svg/pause.png";
     musicImage.style.transform = "scale(1.2)";
-    audio.currentTime = 0;  
     audio.play();
   } else {
     playPauseBtn.dataset.play = false;
@@ -41,6 +44,7 @@ function startAudio(bool) {
 }
 
 playPauseBtn.addEventListener("click", () => {
+  progressBar.max = audio.duration;
   if (playPauseBtn.dataset.play === "false") {
     startAudio(true);
   } else {
@@ -51,7 +55,7 @@ playPauseBtn.addEventListener("click", () => {
 function changeSong(count) {
   const index = Math.abs(count) % 2;
   const obj = listOfMusic[index];
-  console.log(obj);
+  progressBar.max = audio.duration;
   backgroundImg.src = obj.art;
   musicImage.src = obj.art;
   songArtist.textContent = obj.artist;
@@ -67,3 +71,26 @@ nextBtn.addEventListener("click", () => {
 previousBtn.addEventListener("click", () => {
   changeSong(--count);
 });
+
+audio.addEventListener("timeupdate", () => {
+  const currentTime = `${Math.floor(audio.currentTime / 60)}:${
+    Math.floor(audio.currentTime % 60) >= 10
+      ? Math.floor(audio.currentTime % 60)
+      : "0" + Math.floor(audio.currentTime % 60)
+  }`;
+  const duration = isNaN(audio.duration)
+  ? "0:00"
+    : `${Math.floor(audio.duration / 60)}:${
+        Math.floor(audio.duration % 60) >= 10
+          ? Math.floor(audio.duration % 60)
+          : "0" + Math.floor(audio.duration % 60)
+      }`;
+  musicDuration.textContent = duration;
+  musicCurrentTime.textContent = currentTime;
+  progressBar.max = audio.duration;
+  progressBar.value = audio.currentTime;
+});
+
+progressBar.addEventListener('change', () => {
+  audio.currentTime = progressBar.value;
+})
